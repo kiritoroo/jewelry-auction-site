@@ -14,15 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "plugins": [
-      {
-        "name": "typescript-styled-plugin",
-        "tags": [
-          "styled"
-        ]
-      }
-    ]
+    "jsx": "react-jsx"
     },
   "include": [ "src", "**/*.d.ts" ],
   "exclude": ["node_modules"],

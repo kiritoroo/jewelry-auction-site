@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header } from "@/components/Header/Header";
+import { Layout } from "@comp/Layout/Layout";
 
 interface Props {
 
@@ -9,7 +9,7 @@ interface Props {
 export default function IndexPage(props: Props) {
   return (
     <>
-      <Header />
+      <Layout />
     </>
   )
 }
