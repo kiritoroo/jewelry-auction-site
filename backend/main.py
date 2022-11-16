@@ -6,9 +6,13 @@ import os
 
 from settings import origins
 
+from controllers import ad_controller
+
 load_dotenv()
 
-app = FastAPI()
+app = FastAPI(title='Jewerly Auction Site', version='0.5.2')
+
+app.include_router(ad_controller.ad_router)
 
 app.add_middleware(
   CORSMiddleware,
@@ -18,9 +22,9 @@ app.add_middleware(
   allow_headers=["*"]
 )
 
-@app.get("/")
+@app.get("/", tags=['Root'])
 async def root() -> dict:
-  """Test endpoint"""
+  """Test Endpoint"""
   return { "message": "Jewerly Auction Site" }
 
 if __name__ == "__main__":
