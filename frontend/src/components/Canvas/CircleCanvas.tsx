@@ -1,10 +1,9 @@
-import { animate } from "framer-motion"
-import React, { useEffect, useRef } from "react"
+import React, { useRef, useEffect } from "react"
 
-import * as S from './LineCanvas.styled'
+import * as S from './CircleCanvas.styled'
 
-export const LineCanvas = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+export const CircleCanvas = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   function setDPI(canvas: HTMLCanvasElement, dpi: number) {
     canvas.style.width = canvas.style.width || canvas.width + 'px'
@@ -28,52 +27,48 @@ export const LineCanvas = () => {
     ctx.setTransform(scaleFactor, 0, 0, scaleFactor, 0, 0)
   }
 
-  const drawLine = (C: CanvasRenderingContext2D, offsetX: number, offsetY: number) => {
+  const drawCircle = (C: CanvasRenderingContext2D, size: number, offsetX: number, offsetY: number) => {
+    C.lineWidth = 0.2;
     C.strokeStyle ='#222222';
-    C.stroke()
-    C.beginPath();
-    C.lineWidth = 0.1
-    C.moveTo(offsetX, 0)
-    C.lineTo(offsetX, C.canvas.height)
-    
-    C.moveTo(0, -offsetY)
-    C.lineTo(C.canvas.width, -offsetY)
-    C.closePath()
-
-    C.stroke()
+    C.save()
     C.beginPath()
-    C.lineWidth = 0.1
-    C.moveTo(offsetX-C.canvas.width*2, -offsetY-C.canvas.height*2);
-    C.lineTo(offsetX+C.canvas.width*2, -offsetY+C.canvas.height*2)
+    C.arc(550+offsetX, -offsetY, size, 0, Math.PI * 2, false)
+    C.stroke()
+    C.restore()
   }
 
   const draw = (C: CanvasRenderingContext2D, offsetX: number, offsetY: number) => {
     C.clearRect(0, 0, C.canvas.width, C.canvas.height)
+    const size = 200
     const count = 3
-    const spaceX = window.innerWidth/count
-    const spaceY = window.innerHeight/count
-    for (let i=-count-15; i < count+10; i++) {
+    const spaceX = 300/count + size-size/22
+    const spaceY = 250/count + size-size/20
+    for (let i =-count-10; i < count+5; i++) {
       const startX = i*spaceX
       const startY = i*spaceY
-      drawLine(C, startX+offsetX, startY+offsetY)
+      drawCircle(C, size, startX+offsetX, startY+offsetY)
+      for(let j =-count-10; j < count+5; j++) {
+        const spaceVertical = 550*j
+        drawCircle(C, size, startX+offsetX, startY+spaceVertical+offsetY)
+      }
     }
   }
 
   useEffect(() => {
     const canvas = canvasRef.current!
     const context = canvas.getContext('2d')!
-    let offsetX = 0
-    let offsetY = 0
+    let offsetX = -900
+    let offsetY = -300
     let animationFrameId: number
     
-    // setDPI(canvas, 900)
+    // setDPI(canvas, 200)
 
     const render = () => {
       context.canvas.width  = window.innerWidth;
       context.canvas.height = window.innerHeight;
-      offsetX+=1
-      offsetY+=1
-      if (offsetX > 900) {
+      offsetX+=0.8
+      offsetY+=0.5
+      if (offsetX > 800) {
         offsetX = -offsetX
         offsetY = -offsetY
       }
@@ -89,8 +84,6 @@ export const LineCanvas = () => {
   }, [draw])
 
   return (
-    <>
-      <S.Canvas ref={canvasRef as React.RefObject<HTMLCanvasElement>}/>
-    </>
+    <S.Canvas ref={canvasRef as React.RefObject<HTMLCanvasElement>}/>
   )
 }

@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Layout } from "@comp/Layout/Layout"
-import { LineCanvas } from "@comp/Canvas/LineCanvas";
+import { CircleCanvas } from "@comp/Canvas/CircleCanvas";
 import { AdManager } from "@comp/AdManager/AdManager"
 
 export default function AdPage() {
@@ -9,8 +9,8 @@ export default function AdPage() {
     <>
       <Layout>
         <AdManager/>
+        <CircleCanvas/>
       </Layout>
-      <LineCanvas/>
     </>
   )
 }
