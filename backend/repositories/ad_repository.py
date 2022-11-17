@@ -2,7 +2,7 @@ import datetime
 from fastapi import HTTPException
 from bson import ObjectId
 from .ad_repository_interface import AdRepositoryInterface
-from schemas.ad_schema import AdSchemaCreate, AdSchemaUpdate
+from schemas.ad_schema import AdSchemaCreate, AdSchemaPatch, AdSchemaUpdate
 from constants.ad_constant import ad_response_exept
 
 """CRUD operations to be used by endpoints for Ad"""
@@ -32,13 +32,27 @@ class AdRepository(AdRepositoryInterface):
   async def create_ad(self, ad: AdSchemaCreate):
     data = dict(
       **ad.dict(exclude_none=True),
-      current_price=0,
       created_at=datetime.datetime.utcnow())
     result = await self._ad_collection.insert_one(document=data)
     return await self.detail_ad(ad_id=result.inserted_id)
 
   """Update existing models.ad from schemas.AdSchemaUpdate"""
   async def update_ad(self, ad_id: str, ad_data: AdSchemaUpdate):
+    if not ObjectId.is_valid(ad_id):
+      raise HTTPException(**ad_response_exept.get('not_found'))
+    data = {
+      'filter': {
+        '_id': ObjectId(ad_id)
+      },
+      'update': {
+        '$set': ad_data.dict(exclude_none=True)
+      },
+      'return_document': True
+    }
+    return await self._ad_collection.find_one_and_update(**data)
+
+  """Patch existing models.ad from schemas.AdSchemaUpdate"""
+  async def patch_ad(self, ad_id: str, ad_data: AdSchemaPatch):
     if not ObjectId.is_valid(ad_id):
       raise HTTPException(**ad_response_exept.get('not_found'))
     data = {

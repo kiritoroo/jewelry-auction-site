@@ -3,22 +3,25 @@ from typing import Optional
 from datetime import datetime
 from utils.custom_objectID import ObjID
 
-class AdSchemaUpdate(BaseModel):
-  """Schema for update ad"""
+class AdSchemaPatch(BaseModel):
+  """Schema for patch ad"""
   current_price: int
-  
-class AdSchemaCreate(AdSchemaUpdate):
-  """Schema for create ad"""
+
+class AdSchemaUpdate(AdSchemaPatch):
+  """Schema for update ad"""
   product_name: str
   description: Optional[str]
   category: Optional[str]
   base_price: int
   image: Optional[str]
 
+class AdSchemaCreate(AdSchemaUpdate):
+  """Schema for create ad"""
+  created_by: str
+
 class AdSchema(AdSchemaCreate):
   """Schema for ad"""
   id: ObjID = Field(default_factory=ObjID, alias='_id')
-  current_price: int
   created_at: datetime
 
   class Config:

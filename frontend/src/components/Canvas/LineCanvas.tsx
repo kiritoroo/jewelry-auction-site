@@ -1,5 +1,6 @@
 import { animate } from "framer-motion"
 import React, { useEffect, useRef } from "react"
+
 import * as S from './LineCanvas.styled'
 
 export const LineCanvas = () => {
@@ -66,7 +67,7 @@ export const LineCanvas = () => {
     let offsetY = 0
     let animationFrameId: number
     
-    setDPI(canvas, 500)
+    setDPI(canvas, 900)
 
     const render = () => {
       offsetX+=0.3

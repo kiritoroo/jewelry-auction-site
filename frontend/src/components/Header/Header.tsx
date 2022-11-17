@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import Marquee from 'react-fast-marquee'
+
 import * as S from './Header.styled'
 
 export const Header = () => {
@@ -19,10 +21,10 @@ export const Header = () => {
         </S.BrandWrapper>
         <S.Grid>
           <div>
-            <a href='#'>Home</a>
+            <Link to={"/"}>Home</Link>
           </div>
           <div>
-            <a href='#'>About</a>
+            <Link to={"/ad"}>Advertise</Link>
           </div>
           <div>
             <a href='#'>Contact</a>

@@ -7,7 +7,10 @@ export const Canvas = styled.canvas`
   left: 0;
   bottom: 0;
   right: 0;
-  width: 95vw !important;
-  height: 95vh !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 95vw;
+  max-height: 95vh;
   margin: auto;
+  z-index: -1;
 `

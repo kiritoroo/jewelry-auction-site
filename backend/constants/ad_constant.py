@@ -28,6 +28,12 @@ ad_response_data = {
     'response_model': AdSchema,
     'response_model_by_alias': False
   },
+  'patch': {
+    'status_code': status.HTTP_200_OK,
+    'response_description': "Patch exists Advertise",
+    'response_model': AdSchema,
+    'response_model_by_alias': False
+  },
   'delete': {
     'status_code': status.HTTP_204_NO_CONTENT,
     'response_description': "Delete exists Advertise",

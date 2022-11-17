@@ -89,6 +89,7 @@ export const Grid = styled.div`
       cursor: crosshair;    
     }
     a {
+      z-index: 1;
       color: #000;
       text-decoration: none;
       &:hover {

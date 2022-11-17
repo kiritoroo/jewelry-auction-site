@@ -1,6 +1,7 @@
 import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 import os
 
@@ -10,7 +11,13 @@ from controllers import ad_controller
 
 load_dotenv()
 
-app = FastAPI(title='Jewerly Auction Site', version='0.5.2')
+app = FastAPI( 
+  # openapi_url='/docs',
+  title='Jewerly Auction Site', 
+  version='0.5.2'
+)
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(ad_controller.ad_router)
 

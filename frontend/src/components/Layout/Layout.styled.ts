@@ -14,8 +14,18 @@ export const Wrapper = styled(motion.div)`
   width: 95vw;
   height: 95vh;
   margin: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
   border: var(--b-bg) solid;
   z-index: 99;
   /* pointer-events: none;
   user-select: none; */
+  &::-webkit-scrollbar {
+    background: #ddd;
+    width: 16px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #404040;
+    border: 5px solid #ddd;
+  }
 `

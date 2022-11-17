@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from schemas.ad_schema import AdSchemaCreate, AdSchemaUpdate
+from schemas.ad_schema import AdSchemaCreate, AdSchemaPatch, AdSchemaUpdate
 
 class AdRepositoryInterface(ABC):
   @abstractmethod
@@ -16,6 +16,10 @@ class AdRepositoryInterface(ABC):
 
   @abstractmethod
   async def update_ad(self, ad_id: str, ad_data: AdSchemaUpdate):
+    pass
+
+  @abstractmethod
+  async def patch_ad(self, ad_id: str, ad_data: AdSchemaPatch):
     pass
 
   @abstractmethod

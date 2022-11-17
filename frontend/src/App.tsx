@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
 
 import IndexPage from "./pages/IndexPage/IndexPage"
+import AdPage from "./pages/AdPage/AdPage"
 
 export default function App() {
   const queryClient = new QueryClient({
@@ -20,6 +21,7 @@ export default function App() {
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<IndexPage/>}/>
+            <Route path="/ad" element={<AdPage/>}/>
           </Routes>
         </AnimatePresence>
       </Router>
