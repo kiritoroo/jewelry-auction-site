@@ -7,7 +7,7 @@ export const Header = () => {
   
   return (
     <>
-      <S.Header>
+      <S.Wrapper>
         <S.LogoWrapper>
           <img src='/icon-diamond.png'/>
         </S.LogoWrapper>
@@ -33,7 +33,7 @@ export const Header = () => {
             <a href='#'>Account</a>
           </div>
         </S.Grid>
-      </S.Header>
+      </S.Wrapper>
     </>
   )
 }

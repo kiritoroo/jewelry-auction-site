@@ -8,4 +8,5 @@ export interface BackendAd {
   created_by: string;
   base_price: number;
   current_price: string;
+  status: string;
 }

@@ -9,8 +9,8 @@ export default function AdPage() {
     <>
       <Layout>
         <AdManager/>
-        <CircleCanvas/>
       </Layout>
+      <CircleCanvas/>
     </>
   )
 }

@@ -6,6 +6,7 @@ from utils.custom_objectID import ObjID
 class AdSchemaPatch(BaseModel):
   """Schema for patch ad"""
   current_price: int
+  status: Optional[str]
 
 class AdSchemaUpdate(AdSchemaPatch):
   """Schema for update ad"""

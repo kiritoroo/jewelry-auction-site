@@ -23,9 +23,9 @@ export const AdCard = (props: Props) => {
         <S.Description>{ad.description}</S.Description>
         <S.PriceWrapper>
           <S.Price>${ad.current_price}</S.Price>
-          <S.Category>{ad.category}</S.Category>
-          <S.Time>Remaining: 22m 10s</S.Time>
+          <S.Status># {ad.status}</S.Status>
         </S.PriceWrapper>
+        <S.Time>Remaining: 22m 10s</S.Time>
       </S.Wrapper>
     </>
   )

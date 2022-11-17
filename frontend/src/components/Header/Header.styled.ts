@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 
 import { media } from "@style/media";
 
-export const Header = styled(motion.header)`
+export const Wrapper = styled(motion.header)`
   display: flex;
   align-items: stretch;
   border-bottom: var(--b-md) solid;
   position: sticky;
   top: 0;
+  width: 100%;
   z-index: 10;
   background: var(--c-white);
 `
@@ -28,8 +29,8 @@ export const LogoWrapper = styled(BaseWrapper)`
   left: 0px;
   bottom: 0;
   right: 0;
-  width: 110px;
-  height: 110px;
+  width: clamp(50px, 10vw, 120px);
+  height: clamp(50px, 10vw, 120px);
   z-index: 11;
   background-color: var(--c-white);
   border-right: var(--b-md) solid;
@@ -89,6 +90,10 @@ export const Grid = styled.div`
       cursor: crosshair;    
     }
     a {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
       z-index: 1;
       color: #000;
       text-decoration: none;
