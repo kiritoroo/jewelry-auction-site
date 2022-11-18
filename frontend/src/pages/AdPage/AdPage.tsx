@@ -1,15 +1,15 @@
 import React from "react"
 
-import { Layout } from "@comp/Layout/Layout"
+import { Container } from "@comp/Layout/Container"
 import { CircleCanvas } from "@comp/Canvas/CircleCanvas";
-import { AdManager } from "@comp/AdManager/AdManager"
+import { AdManager } from "@comp/AdManager/AdManager";
 
 export default function AdPage() {
   return (
     <>
-      <Layout>
+      <Container>
         <AdManager/>
-      </Layout>
+      </Container>
       <CircleCanvas/>
     </>
   )

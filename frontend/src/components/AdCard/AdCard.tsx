@@ -26,6 +26,11 @@ export const AdCard = (props: Props) => {
           <S.Status># {ad.status}</S.Status>
         </S.PriceWrapper>
         <S.Time>Remaining: 22m 10s</S.Time>
+        { ad.status === 'ongoing'? (
+          <S.HoverWrapper>
+            <S.Button to={`/ad/${ad.id}`}>Tham gia</S.Button>
+          </S.HoverWrapper>
+        ): null }
       </S.Wrapper>
     </>
   )

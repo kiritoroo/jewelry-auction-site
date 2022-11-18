@@ -1,4 +1,38 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+export const HoverWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  transform: scale(0);
+  transition: all 0.3s ease;
+  opacity: 0;
+  position: absolute;
+  top: 30%;
+  left: 1em;
+  right: 1em;
+  padding: 3em 1em;
+  z-index: 3;
+`
+
+export const Button = styled(Link)`
+  border: var(--b-md) solid;
+  font-family: "Urbanist", sans-serif;
+  background: linear-gradient(to left, white 50%, salmon 50%) right;
+  background-size: 200%;
+  transition: .3s ease-out;
+  padding: 1em 0.5em;
+  color: #000;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  &:hover {
+    background-position: left;
+    cursor: crosshair;    
+  }
+`
 
 export const Wrapper = styled.div`
   display: flex;
@@ -24,6 +58,10 @@ export const Wrapper = styled.div`
   }
   &:hover {
     box-shadow: 0 0 0 0;
+    ${HoverWrapper} {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
   &:hover::after {
     transform: scale(1);
