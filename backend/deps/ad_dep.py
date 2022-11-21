@@ -1,7 +1,7 @@
 from fastapi import Depends
 
-from database import database
 from repositories.ad_repository import AdRepository
+from database import database
 
 ad_collection = database.get_collection('ad')
 

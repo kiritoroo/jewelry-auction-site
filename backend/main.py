@@ -8,6 +8,7 @@ import os
 from settings import origins
 
 from controllers import ad_controller
+from controllers import account_controller
 
 load_dotenv()
 
@@ -20,6 +21,7 @@ app = FastAPI(
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(ad_controller.ad_router)
+app.include_router(account_controller.account_router)
 
 app.add_middleware(
   CORSMiddleware,
