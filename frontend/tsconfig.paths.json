@@ -7,6 +7,7 @@
       "@type/*": ["src/types/*"],
       "@page/*": ["src/pages/*"],
       "@style/*": ["src/styles/*"],
+      "@context/*": ["src/context/*"],
       "@util/*": ["src/utils/*"]
     }
   }
