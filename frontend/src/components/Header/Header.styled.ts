@@ -8,8 +8,10 @@ export const Wrapper = styled(motion.header)`
   align-items: stretch;
   border-bottom: var(--b-md) solid;
   position: sticky;
+  /* margin-bottom: 4%; */
   top: 0;
   width: 100%;
+  height: 10%;
   z-index: 10;
   background: var(--c-white);
 `

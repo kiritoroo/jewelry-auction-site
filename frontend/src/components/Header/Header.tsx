@@ -30,7 +30,7 @@ export const Header = () => {
             <a href='#'>Contact</a>
           </div>
           <div>
-            <a href='#'>Account</a>
+            <Link to={"/login"}>Account</Link>
           </div>
         </S.Grid>
       </S.Wrapper>

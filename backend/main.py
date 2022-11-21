@@ -1,5 +1,5 @@
 import uvicorn
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
@@ -35,4 +35,10 @@ async def root() -> dict:
   return { "message": "Jewerly Auction Site" }
 
 if __name__ == "__main__":
-  uvicorn.run("main:app", host=os.environ.get('DOMAIN'), port=int(os.environ.get('PORT')), log_level="info", reload=True)
+  uvicorn.run(
+    "main:app",
+    host=os.environ.get('DOMAIN'),
+    port=int(os.environ.get('PORT')),
+    log_level="info",
+    reload=True
+  )
