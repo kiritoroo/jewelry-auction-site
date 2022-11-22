@@ -11,9 +11,8 @@ import { AuthWrapper } from "@comp/AuthWrapper/AuthWrapper"
 import IndexPage from "@page/IndexPage/IndexPage"
 import AdsPage from "@page/AdsPage/AdsPage"
 import AdPage from "@page/AdPage/AdPage"
-import LoginPage from "@page/LoginPage/LoginPage"
-import RegisterPage from "@page/RegisterPage/RegisterPage"
-import ProfilePage from "@page/ProfilePage/ProfilePage";
+import AccountPage from "@page/AccountPage/AccountPage"
+import RegisterPage from "@page/RegisterPage/RegisterPage";
 
 export default function App() {
   const queryClient = new QueryClient({
@@ -31,9 +30,8 @@ export default function App() {
           <Router >
             <AnimatePresence mode="wait">
               <Routes>
-                <Route path="/login" element={<LoginPage/>}/>
+                <Route path="/account" element={<AccountPage/>}/>
                 <Route path="/register" element={<RegisterPage/>}/>
-                <Route path="/profile" element={<ProfilePage/>}/>
 
                 <Route path="/" element={<IndexPage/>}/>
                 <Route path="/ad" element={<AdsPage/>}/>

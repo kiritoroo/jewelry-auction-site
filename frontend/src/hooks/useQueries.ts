@@ -23,6 +23,6 @@ export const useGetAd = (adId: string) => {
   )
 }
 
-export const useGetUser = (token: string, user_id: string) => useQuery(['usr'], () => {
-  return userGET({ token, user_id })
+export const useGetUser = (token: string | any, username: string | any) => useQuery(['user'], () => {
+  return userGET({ token, username })
 })

@@ -7,7 +7,7 @@ interface LoginPOST {
 
 interface userGET{
   token: string;
-  user_id: string;
+  username: string;
 }
 
 export const loginPOST = ({ username, password }: LoginPOST) => {
@@ -17,9 +17,13 @@ export const loginPOST = ({ username, password }: LoginPOST) => {
   return axios.post('account/login', params)
 }
 
-export const userGET = ({ token, user_id }: userGET) => {
+export const userGET = ({ token, username }: userGET) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   }
-  return axios.get(`account/user/${user_id}`, config)
+  return axios.get(`account/me/${username}`, config)
+}
+
+export const registerPOST = ({  }) => {
+
 }

@@ -35,3 +35,12 @@ async def detail_user(
 ):
   return await AccountService(**service_data) \
     .detail_user(user_id=user_id)
+
+@account_router.get('/me/{username}', **account_response_data.get('detail'))
+async def get_user(
+  username: str,
+  token: str = Depends(token_auth_scheme),
+  service_data=Depends(get_account_service)
+):
+  return await AccountService(**service_data) \
+    .get_user(username=username)

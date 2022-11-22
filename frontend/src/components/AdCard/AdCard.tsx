@@ -1,5 +1,6 @@
 import React from "react";
 import { BackendAd } from "@type/types";
+import { useAuthContext } from '@context/AuthContext'
 
 import * as S from './AdCard.styled'
 
@@ -9,6 +10,7 @@ interface Props {
 
 export const AdCard = (props: Props) => {
   const { ad } = props
+  const { user } = useAuthContext()
 
   return (
     <>

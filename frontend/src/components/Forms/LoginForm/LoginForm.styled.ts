@@ -8,12 +8,13 @@ export const Wrapper = styled.div`
   justify-content: center;
   min-height: 90%;
   top: 0;
-  > div {
-    max-width: 40%;
-    min-width: 35%;
-    padding: 2em;
-    margin-bottom: 8em;
-  }
+`
+
+export const Form = styled.form`
+  max-width: 40%;
+  min-width: 35%;
+  padding: 2em;
+  margin-bottom: 2em;
 `
 
 export const Label = styled.label`

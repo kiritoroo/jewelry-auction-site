@@ -58,3 +58,7 @@ class AccountService:
     hashed_password = await self._password_service.hashed_password(plain_password=user_data.password)
     user_data.password = hashed_password
     return await self._repository.save_user(user=user_data)
+
+  
+  async def get_user(self, username: str):
+    return await self._repository.get_user(username=username)
