@@ -65,10 +65,12 @@ export const AuthContextProvider = React.memo<Props>(props => {
 
       setUser({
         accessToken: userToken,
-        scope: decoded.scopes[0].toUpperCase() as Scope,
+        // scope: decoded.scopes[0].toUpperCase() as Scope,
+        scope: 'USER',
         username: decoded.sub,
         tokenExpiration: decoded.exp,
       })
+
 
       toast.success('Login successful!')
     }, [logoutUser]
@@ -112,8 +114,8 @@ export const useAuthContext = () => {
   if (ctx === undefined) {
     throw new Error('useAuthContext must be used within a AuthContextProvider');
   }
-  return ctx;
-};
+  return ctx
+}
 
-AuthContext.displayName = 'AuthContext';
-AuthContextProvider.displayName = 'AuthContextProvider';
+AuthContext.displayName = 'AuthContext'
+AuthContextProvider.displayName = 'AuthContextProvider'

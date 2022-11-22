@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout } from '@comp/Layout/Layout'
 import * as S from'./LoginPage.styled'
 import { loginPOST } from '@util/apiQueries/apiAccount'
 import { useAuthContext } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
+import { LineCanvas } from '@comp/Canvas/LineCanvas'
 
 interface Props {
 
 }
 
 export default function LoginPage(props: Props) {
-  const { serializeUser } = useAuthContext();
+  const navigate = useNavigate()
+  const { user, serializeUser } = useAuthContext();
+
+  useEffect(() => {
+    console.log(user.username)
+    if (user.username != null) navigate('/profile')
+  }, [])
 
   const initialForm = {
     username: "",
@@ -66,6 +74,7 @@ export default function LoginPage(props: Props) {
             </S.Grid>
           </div>
         </S.Wrapper>
+        <LineCanvas/>
       </Layout>
     </>
   )

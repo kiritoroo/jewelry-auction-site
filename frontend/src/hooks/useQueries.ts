@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "react-query";
 import { getAd, getAds } from "@util/apiQueries/apiAd";
+import { userGET } from "@util/apiQueries/apiAccount";
 
 export const useGetAds = () => {
   return useQuery(['ads'], () => getAds())
@@ -21,3 +22,7 @@ export const useGetAd = (adId: string) => {
     }
   )
 }
+
+export const useGetUser = (token: string, user_id: string) => useQuery(['usr'], () => {
+  return userGET({ token, user_id })
+})
