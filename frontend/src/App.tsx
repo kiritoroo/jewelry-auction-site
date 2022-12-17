@@ -14,7 +14,6 @@ import AdPage from "@page/AdPage/AdPage";
 import AccountPage from "@page/AccountPage/AccountPage";
 import RegisterPage from "@page/RegisterPage/RegisterPage";
 import CartPage from "@page/CartPage/CartPage";
-
 export default function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
