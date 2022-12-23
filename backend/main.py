@@ -1,8 +1,10 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
+from fastapi.security import HTTPBearer
+
 import os
 
 from settings import origins
@@ -11,6 +13,8 @@ from controllers import ad_controller
 from controllers import account_controller
 
 load_dotenv()
+
+token_auth_scheme = HTTPBearer()
 
 app = FastAPI( 
   # openapi_url='/docs',
@@ -32,7 +36,9 @@ app.add_middleware(
 )
 
 @app.get("/", tags=['Root'])
-async def root() -> dict:
+async def root(
+    token: str = Depends(token_auth_scheme)
+) -> dict:
   """Test Endpoint"""
   return { "message": "Jewerly Auction Site" }
 
